@@ -1,0 +1,12 @@
+{
+    "1": {
+        "dish_name": "test",
+        "price": 45.0,
+        "available": true
+    },
+    "3": {
+        "dish_name": "Samosa",
+        "price": 10.0,
+        "available": true
+    }
+}

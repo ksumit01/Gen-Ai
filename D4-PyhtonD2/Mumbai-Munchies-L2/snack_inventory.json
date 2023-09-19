@@ -1,0 +1,30 @@
+{
+    "1": {
+        "name": "Samosa",
+        "price": 15.0,
+        "available": true,
+        "quantity": 6,
+        "category": "Beverages"
+    },
+    "2": {
+        "name": "Choco Lava Cake",
+        "price": 45.0,
+        "available": true,
+        "quantity": 2,
+        "category": "Dessert"
+    },
+    "3": {
+        "name": "Chips",
+        "price": 10.0,
+        "available": true,
+        "quantity": 20,
+        "category": "Snacks"
+    },
+    "4": {
+        "name": "test",
+        "price": 10.0,
+        "available": false,
+        "quantity": 12,
+        "category": "snack"
+    }
+}
