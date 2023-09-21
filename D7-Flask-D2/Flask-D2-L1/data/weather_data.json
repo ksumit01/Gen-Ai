@@ -1,0 +1,10 @@
+{
+    "San Francisco": {
+        "temperature": 14,
+        "weather": "Cloudy"
+    },
+    "New York": {
+        "temperature": "75",
+        "weather": "Sunny"
+    }
+}

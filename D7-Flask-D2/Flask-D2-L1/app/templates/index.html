@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather Data Management</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Weather Data Management</h1>
+
+    <h2>Add Weather Data</h2>
+    <form action="/add_weather/" method="POST">
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required /><br />
+      <label for="temperature">Temperature:</label>
+      <input type="number" id="temperature" name="temperature" required /><br />
+      <label for="weather">Weather Condition:</label>
+      <select id="weather" name="weather">
+        <option value="Sunny">Sunny</option>
+        <option value="Rainy">Rainy</option>
+        <option value="Winter">Winter</option>
+        <option value="Humid">Humid</option>
+        <!-- Add more options as needed --></select
+      ><br />
+      <input type="submit" value="Add Data" />
+    </form>
+
+    <h2>Weather Data</h2>
+    <!-- Display weather data here -->
+    <ul id="weather-list">
+      {% for city, data in weather_data.items() %}
+      <li class="{{ data.weather|lower }}">
+        {{ city }} - Temperature: {{ data.temperature }}°C
+        <button onclick="openEditForm('{{ city }}')">Edit</button>
+        <button onclick="openDeleteForm('{{ city }}')">Delete</button>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <!-- Update Form -->
+    <div id="edit-form" style="display: none">
+      <h2>Edit Weather Data</h2>
+      <form action="/update_weather/" method="POST">
+        <label for="edit-city">City:</label>
+        <input type="text" id="edit-city" name="city" required /><br />
+        <label for="edit-temperature">Temperature:</label>
+        <input
+          type="number"
+          id="edit-temperature"
+          name="temperature"
+          required
+        /><br />
+        <label for="edit-weather">Weather Condition:</label>
+        <select id="edit-weather" name="weather">
+          <option value="Sunny">Sunny</option>
+          <option value="Rainy">Rainy</option>
+          <option value="Winter">Winter</option>
+          <option value="Humid">Humid</option>
+          <!-- Add more options as needed --></select
+        ><br />
+        <input type="submit" value="Update Data" />
+      </form>
+    </div>
+
+    <!-- Delete Form -->
+    <div id="delete-form" style="display: none">
+      <h2>Delete Weather Data</h2>
+      <form action="/delete_weather/" method="POST">
+        <label for="delete-city">City:</label>
+        <input type="text" id="delete-city" name="city" required /><br />
+        <input type="submit" value="Delete Data" />
+      </form>
+    </div>
+  </body>
+</html>
+<!-- JavaScript code to handle form interactions -->
+<script>
+  // Function to open the Edit form
+  function openEditForm(city) {
+    // Populate the form fields with the current data
+    const weatherData = JSON.parse(
+      document.getElementById("weather-data").textContent
+    );
+    const editForm = document.getElementById("edit-form");
+    const form = editForm.querySelector("form");
+    form.elements.city.value = city;
+    form.elements.temperature.value = weatherData[city].temperature;
+    form.elements.weather.value = weatherData[city].weather;
+    editForm.style.display = "block"; // Show the edit form
+  }
+
+  // Function to open the Delete form
+  function openDeleteForm(city) {
+    const deleteForm = document.getElementById("delete-form");
+    const form = deleteForm.querySelector("form");
+    form.elements.city.value = city;
+    deleteForm.style.display = "block"; // Show the delete form
+  }
+</script>
