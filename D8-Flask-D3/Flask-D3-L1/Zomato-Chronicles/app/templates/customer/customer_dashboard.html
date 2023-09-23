@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Customer Dashboard</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Welcome, {{ customer_name }}</h1>
+
+    <h2>Menu</h2>
+    <a href="{{ url_for('view_menu') }}">View Menu</a><br /><br />
+
+    <h2>Place Order</h2>
+    <a href="{{ url_for('place_order') }}">Place an Order</a><br /><br />
+
+    <h2>Check Order Status</h2>
+    <a href="{{ url_for('check_order_status') }}">Check Order Status</a
+    ><br /><br />
+
+    <h2>Cancel Order</h2>
+    <a href="{{ url_for('cancel_order') }}">Cancel an Order</a><br /><br />
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </body>
+</html>

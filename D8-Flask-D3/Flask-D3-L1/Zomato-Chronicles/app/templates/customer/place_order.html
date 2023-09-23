@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Order</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Place Order</h1>
+    <form method="POST" action="{{ url_for('place_order') }}">
+      <label for="customer_name">Your Name:</label>
+      <input
+        type="text"
+        id="customer_name"
+        name="customer_name"
+        required
+      /><br /><br />
+
+      <label for="dish_ids">Dish IDs (comma-separated):</label>
+      <input type="text" id="dish_ids" name="dish_ids" required /><br /><br />
+
+      <input type="submit" value="Place Order" />
+    </form>
+    <a href="{{ url_for('customer_dashboard') }}">Back to Dashboard</a>
+  </body>
+</html>
