@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hand Gesture Video Player</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>Teachable Machine Image Model</div>
+    <button type="button" onclick="init()">Start</button>
+    <div id="webcam-container"></div>
+    <div id="prediction-container">Loading...</div>
+    <video id="video-player" controls>
+      <source src="sample.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+      const URL = "https://teachablemachine.withgoogle.com/models/xoAmy-Xz4/";
+
+      let model, webcam, predictionContainer, maxPredictions;
+
+      // Load the image model and setup the webcam
+      async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        predictionContainer = document.getElementById("prediction-container");
+      }
+
+      async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+      }
+
+      async function predict() {
+        const prediction = await model.predict(webcam.canvas);
+
+        // Assuming your Teachable Machine model has a "Play" class
+        // You may need to adjust this based on your model
+        const playClass = prediction[0].className;
+        const playProbability = prediction[0].probability.toFixed(2);
+
+        if (playProbability >= 0.5) {
+          predictionContainer.innerHTML = "Play";
+          playVideo();
+        } else {
+          predictionContainer.innerHTML = "Pause";
+          pauseVideo();
+        }
+      }
+
+      // Function to play the video
+      function playVideo() {
+        const videoPlayer = document.getElementById("video-player");
+        videoPlayer.play();
+      }
+
+      // Function to pause the video
+      function pauseVideo() {
+        const videoPlayer = document.getElementById("video-player");
+        videoPlayer.pause();
+      }
+    </script>
+  </body>
+</html>
