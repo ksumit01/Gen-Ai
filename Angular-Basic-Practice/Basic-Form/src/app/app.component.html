@@ -1,0 +1,67 @@
+<h1>{{ title }}</h1>
+<form #basicForm="ngForm" (ngSubmit)="getData(basicForm)">
+  <input type="text" ngModel name="user" placeholder="Enter your name" />
+  <br /><br />
+  <input type="text" ngModel name="age" placeholder="Enter your age" />
+  <br /><br />
+  <input
+    type="text"
+    ngModel
+    name="password"
+    placeholder="Enter your password"
+  />
+  <br /><br />
+  <button>Register</button>
+</form>
+
+<ul>
+  <li>Name: {{ userData.user }}</li>
+  <li>Age: {{ userData.age }}</li>
+  <li>Password: {{ userData.password }}</li>
+</ul>
+
+<h2>Toggle Element Example</h2>
+
+<button (click)="toggleElement()">Click me</button>
+
+<h1 *ngIf="flag" style="color: red">Hello</h1>
+<br /><br />
+<h1>Below is the Example of Bootstrap</h1>
+<br />
+<p>
+  <ngb-alert>
+    This alert's type is success and it's not dismissible because the config has
+    been customized
+  </ngb-alert>
+</p>
+<br /><br />
+<h1>Below is the Example of Material UI</h1>
+<br /><br />
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<div class="example-button-row">
+  <button mat-raised-button>Basic</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="accent">Accent</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-raised-button disabled>Disabled</button>
+  <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+</div>
+<button
+  mat-raised-button
+  color="primary"
+  matBadge="8"
+  matBadgePosition="before"
+  matBadgeColor="accent"
+>
+  Button with a badge on the left
+</button>
+<button
+  mat-raised-button
+  color="primary"
+  matBadge="8"
+  matBadgePosition="before"
+  matBadgeColor="accent"
+>
+  Action
+</button>
