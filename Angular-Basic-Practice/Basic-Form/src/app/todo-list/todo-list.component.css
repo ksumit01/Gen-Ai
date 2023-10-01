@@ -1,0 +1,20 @@
+/* todo-form.component.css */
+
+.form-container {
+  padding: 20px;
+  margin: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* todo-list.component.css */
+
+.task-item {
+  margin-bottom: 10px;
+}
+
+.table {
+  margin-top: 20px;
+}

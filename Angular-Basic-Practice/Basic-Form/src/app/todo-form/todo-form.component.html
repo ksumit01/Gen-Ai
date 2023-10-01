@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <!-- <h1 style="color: rgb(170, 170, 43)">WELCOME TO TO-DO BUDDY!</h1> -->
+
+  <mat-card class="form-container">
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="newTask.title"
+          required
+        />
+        <mat-label>Title</mat-label>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <textarea
+          matInput
+          id="description"
+          name="description"
+          [(ngModel)]="newTask.description"
+        ></textarea>
+        <mat-label>Description</mat-label>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="full-width"
+      >
+        Add Task
+      </button>
+    </form>
+  </mat-card>
+</div>
