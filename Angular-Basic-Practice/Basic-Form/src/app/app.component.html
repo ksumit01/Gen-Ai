@@ -1,5 +1,5 @@
-<h1>{{ title }}</h1>
-<form #basicForm="ngForm" (ngSubmit)="getData(basicForm)">
+<!-- <h1>{{ title }}</h1> -->
+<!-- <form #basicForm="ngForm" (ngSubmit)="getData(basicForm)">
   <input type="text" ngModel name="user" placeholder="Enter your name" />
   <br /><br />
   <input type="text" ngModel name="age" placeholder="Enter your age" />
@@ -64,4 +64,48 @@
   matBadgeColor="accent"
 >
   Action
-</button>
+</button> -->
+
+<!-- Add a Navbar Header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container">
+    <a class="navbar-brand text-white" href="#">Your ToDo Buddy</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/todos">To-Do List</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Apply a dark theme background outside the container -->
+<div class="dark-theme">
+  <!-- Wrap the content in a container with a background color -->
+  <div class="content-container mt-5">
+    <div class="container shadow p-4 bg-white">
+      <h1 class="display-4 text-center mb-4">Welcome to Your ToDo Buddy</h1>
+      <p class="lead text-center">
+        Organize your tasks, stay productive, and get things done!
+      </p>
+
+      <app-todo-form></app-todo-form>
+      <app-todo-list></app-todo-list>
+    </div>
+  </div>
+</div>

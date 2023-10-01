@@ -1,0 +1,34 @@
+/* Add this CSS to your project's global styles (styles.css) */
+
+/* Navbar styles */
+.navbar {
+  /* margin: 0%; */
+  background-color: #3498db; /* Set the background color of the Navbar */
+}
+
+.navbar-brand {
+  color: #fff !important; /* Set the Navbar brand text color to white */
+  font-size: 24px; /* Increase the font size */
+}
+
+.navbar-nav .nav-link {
+  color: #fff !important; /* Set the Navbar links text color to white */
+  font-weight: 600; /* Add some font weight for emphasis */
+  margin-right: 15px; /* Add spacing between Navbar links */
+}
+
+/* Header styles */
+.container.mt-5 {
+  text-align: center; /* Center the content within the container */
+}
+
+.display-4 {
+  color: rgb(170, 170, 43); /* Set the heading color */
+  margin-bottom: 20px; /* Add spacing below the heading */
+}
+
+.lead {
+  color: #666; /* Set the description text color */
+}
+
+/* Add any additional custom styles as needed */
